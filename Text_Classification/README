@@ -1,0 +1,50 @@
+Running code:
+python text_segment_classification.py
+
+Assumptions:
+It assumes that the data is in "segment/segment.data.train"
+It also assumes that the blank spaces are labelled #BLANK#
+
+For this assignment I used python's scikit-learn package.
+The learning algorithm I used was RandomForestClassifier
+Features I used for the feature vector:
+1.  spaces to length ratio
+2.  number to length ratio
+3.  alphabet to length ratio
+4.  uppercase letters to length ratio
+5.  check if the chunk has the same number of leading spaces
+6.  number of periods
+7.  ratio of punctuation characters to alphabet characters
+8.  sentence starts with this quotation special characters
+9.  first two characters are "--"
+10. it has a number at the beginning
+11. starts with "in article"
+12. number of capitalized first characters in a string to words ratio
+13. average spaces between words
+14. last character is a period
+15. average number of words per line
+16. number of lines the segment consists of
+
+To test the training data I divided it into 60% train & 40% test.
+Like suggested in the assignment I divided it into segments of same labels
+and print out based on the number of segments and not lines.
+
+Results:
+Since it's a randomforestm, the results vary slightly for each run
+{'GRAPHIC': 0, 'QUOTED': 3, 'NNHEAD': 0, 'ITEM': 8, 'SIG': 12, 'ADDRESS': 0, 'PTEXT': 8, 'TABLE': 11, 'HEADL': 1}
+### HW1B ykim160 - OVERALL CORRECT: 353 = 89.14%	INCORRECT: 43 = 10.86%
+
+{'GRAPHIC': 0, 'QUOTED': 3, 'NNHEAD': 0, 'ITEM': 6, 'SIG': 13, 'ADDRESS': 0, 'PTEXT': 7, 'TABLE': 9, 'HEADL': 1}
+### HW1B ykim160 - OVERALL CORRECT: 357 = 90.15%	INCORRECT: 39 = 9.85%
+
+{'GRAPHIC': 0, 'QUOTED': 1, 'NNHEAD': 0, 'ITEM': 7, 'SIG': 13, 'ADDRESS': 0, 'PTEXT': 10, 'TABLE': 9, 'HEADL': 1}
+### HW1B ykim160 - OVERALL CORRECT: 355 = 89.65%	INCORRECT: 41 = 10.35%
+
+For testing purposes I printed the top line out to see what label my model was missing the most. (commented out)
+As the results show most of the erros are on SIG, TABLE, ITEM, PTEXT.
+Identifying features for SIG is really difficult because it varies a lot.
+TABLE and ITEM were not as easily identifiable despite having features that are specific to them.
+PTEXT didn't really have specific features that defined it.
+
+The accuracy can be higher if we print by lines and not by segments since each mistake reduces
+the correctness by a lot.

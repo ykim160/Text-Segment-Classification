@@ -1,0 +1,33 @@
+Running code:
+python end-of-sentence-detection.py
+
+Assumptions:
+It assumes that the data is called "sent.data.train" and is in the same directory
+Uses data in "classes/abbrevs", "classes/titles", and "classes/sentence_internal"
+
+For this assignment I used python's scikit-learn package.
+The learning algorithm I used was RandomForestClassifier
+Features I used for the feature vector:
+1.  left word is an EOS word
+2.  left word is in the abbreviation list
+3.  left word is in the titles list
+4.  left word is in the sentence internal list
+5.  word before is shorter than 3 letters
+6.  the first letter of the word before sentence is uppercase
+7.  word after sentence is uppercase
+8.  left and right words are uppercase
+9.  next word starts with a quotation
+10. previous word ends with a quotation
+11. left side words have more than 1 period
+12. left side words contains numbers
+13. sentence is smaller than 1 word
+14. left side words have length of one
+
+To test the training data I divided it into 70% train & 30% test.
+
+Results:
+Since it's a randomforestm, the results vary slightly for each run
+
+### HW1A ykim160 - OVERALL CORRECT: 13449 = 99.61%	INCORRECT: 52 = 0.39%
+### HW1A ykim160 - OVERALL CORRECT: 13455 = 99.66%	INCORRECT: 46 = 0.34%
+### HW1A ykim160 - OVERALL CORRECT: 13451 = 99.63%	INCORRECT: 50 = 0.37%
